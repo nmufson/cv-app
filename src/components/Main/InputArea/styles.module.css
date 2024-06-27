@@ -1,0 +1,6 @@
+.input-area-container {
+  min-width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

@@ -1,0 +1,11 @@
+.resume-container {
+  min-width: 50%;
+  min-height: 800px;
+}
+
+.resume {
+  border: 1px black solid;
+  min-width: 50%;
+  min-height: 800px;
+  margin: 10px 15px;
+}
