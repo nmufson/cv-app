@@ -15,12 +15,3 @@ export function App() {
     </>
   );
 }
-
-//sections
-//general info
-//educational experience
-//work experience
-
-// const EducationForm
-
-// const ProjectsForm

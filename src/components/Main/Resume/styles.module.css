@@ -1,11 +1,75 @@
-.resume-container {
-  min-width: 50%;
-  min-height: 800px;
+:root {
+  --side-margin: 15px;
 }
 
 .resume {
   border: 1px black solid;
-  min-width: 50%;
-  min-height: 800px;
+  width: 100%;
+  height: 100%;
   margin: 10px 15px;
+}
+
+.resume-section {
+  border-bottom: 1px black solid;
+}
+
+h6 {
+  font-size: 1.4rem;
+  margin: 0 0 0 var(--side-margin);
+}
+
+.border-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.border {
+  display: inline-block;
+  border-bottom: 2px solid black; /* Set the border width and color */
+  width: 100%; /* Set the length of the bottom border */
+  margin: 0 var(--side-margin) 0 var(--side-margin);
+}
+
+.personal {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+
+.personal > div {
+  display: flex;
+  flex-direction: column;
+}
+
+.personal > div:first-child {
+  margin-left: var(--side-margin);
+  align-items: flex-start;
+}
+
+.personal > div:nth-child(2) {
+  align-items: center;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.personal > div:nth-child(3) {
+  margin-right: var(--side-margin);
+  align-items: flex-end;
+}
+
+.education {
+  display: flex;
+  flex-direction: column;
+}
+
+.education > div {
+  margin: 0 var(--side-margin) 0 var(--side-margin);
+}
+
+.education > div:not(:last-child) {
+  display: flex;
+  justify-content: space-between;
 }
