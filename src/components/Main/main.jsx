@@ -16,7 +16,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
 //main needs to control the state of the updated info
 //to communicate betweem input and resume areas
 export function Main() {
-  const formConfigs = [
+  const [formSections, setFormSections] = useState([
     {
       id: 'personal',
       title: 'Personal',
@@ -28,6 +28,7 @@ export function Main() {
         GitHub: { type: 'text', required: false, maxLength: 50 },
         LinkedIn: { type: 'text', required: false, maxLength: 50 },
       },
+      values: [{ id: Date.now(), values: {} }],
     },
     {
       id: 'education',
@@ -47,6 +48,7 @@ export function Main() {
           max: '4.0',
         },
       },
+      values: [{ id: Date.now(), values: {} }],
     },
     {
       id: 'workExperience',
@@ -54,13 +56,13 @@ export function Main() {
       inputs: {
         'Company Name': { type: 'text', required: true, maxLength: 50 },
         Location: { type: 'text', required: true, maxLength: 150 },
-        Description0: { type: 'text', required: false },
-        Description1: { type: 'text', required: false },
-        Description2: { type: 'text', required: false },
-        Description3: { type: 'text', required: false },
+        Description0: { type: 'text', required: false, maxLength: 150 },
+        Description1: { type: 'text', required: false, maxLength: 150 },
+        Description2: { type: 'text', required: false, maxLength: 150 },
         'Start Date': { type: 'date', required: true },
         'End Date': { type: 'date', required: false },
       },
+      values: [{ id: Date.now(), values: {} }],
     },
     {
       id: 'projects',
@@ -69,7 +71,15 @@ export function Main() {
         'Project Name': { type: 'text', required: true, maxLength: 50 },
         Description: { type: 'text', required: true, maxLength: 150 },
         Date: { type: 'date', required: true },
+        Description0: { type: 'text', required: false },
+        Description1: { type: 'text', required: false },
+        Description2: { type: 'text', required: false },
+        Description3: { type: 'text', required: false },
       },
+      values: [
+        { id: Date.now(), values: {} },
+        { id: Date.now() + 1, values: {} },
+      ],
     },
     {
       id: 'technicalSkills',
@@ -83,63 +93,45 @@ export function Main() {
         },
         Tools: { type: 'text', required: true, maxLength: 50 },
       },
-    },
-  ];
-
-  const [formValues, setFormValues] = useState([
-    {
-      id: 'personal',
-      title: 'Personal',
-      values: {},
-    },
-    {
-      id: 'education',
-      title: 'Education',
-      values: [],
-    },
-    {
-      id: 'workExperience',
-      title: 'Work Experience',
-      values: [],
-    },
-    {
-      id: 'projects',
-      title: 'Projects',
-      values: [],
-    },
-    {
-      id: 'technicalSkills',
-      title: 'Technical Skills',
-      values: [],
+      values: [{ id: Date.now(), values: {} }],
     },
   ]);
 
-  const updateFormValues = (sectionId, valueId, newValues) => {
-    setFormValues((prevFormValues) =>
-      prevFormValues.map((section) => {
+  const updateFormValues = (sectionId, entryId, newValues) => {
+    setFormSections((prevSections) =>
+      prevSections.map((section) => {
         if (section.id === sectionId) {
-          if (Array.isArray(section.values)) {
-            const updatedValues = section.values.map((item) =>
-              item.id === valueId ? { ...item, ...newValues } : item
-            );
-            return { ...section, values: updatedValues };
-          } else {
-            return { ...section, values: { ...section.values, ...newValues } };
-          }
+          const updatedValues = section.values.map((entry) =>
+            entry.id === entryId
+              ? { ...entry, values: { ...entry.values, ...newValues } }
+              : entry
+          );
+          return { ...section, values: updatedValues };
         }
         return section;
       })
     );
   };
 
-  const addFormValue = (sectionId, newValue) => {
-    setFormValues((prevFormValues) =>
-      prevFormValues.map((section) => {
+  const addFormValue = (sectionId) => {
+    setFormSections((prevSections) =>
+      prevSections.map((section) => {
         if (section.id === sectionId) {
-          if (Array.isArray(section.values)) {
-            const newEntry = { id: Date.now(), ...newValue };
-            return { ...section, values: [...section.values, newEntry] };
-          }
+          const newEntry = { id: Date.now(), values: {} };
+          return { ...section, values: [...section.values, newEntry] };
+        }
+        return section;
+      })
+    );
+  };
+
+  const removeEntry = (sectionId, entryIndex) => {
+    setFormSections((prevSections) =>
+      prevSections.map((section) => {
+        if (section.id === sectionId) {
+          const updatedValues = [...section.values];
+          updatedValues.splice(entryIndex, 1); // Remove element at entryIndex
+          return { ...section, values: updatedValues };
         }
         return section;
       })
@@ -148,8 +140,8 @@ export function Main() {
 
   const [openIndex, setOpenIndex] = useState(null);
 
-  const toggleSectionOpen = (index) => {
-    setOpenIndex(openIndex === index ? null : index);
+  const toggleOpenSection = (sectionIndex) => {
+    setOpenIndex(openIndex === sectionIndex ? null : sectionIndex);
   };
 
   //CSS modules
@@ -157,11 +149,12 @@ export function Main() {
     <div className={styles['main']}>
       <div className={styles['left-side']}>
         <InputContainerComponent
-          formConfigs={formConfigs}
-          toggleSectionOpen={toggleSectionOpen}
+          formSections={formSections}
+          toggleOpenSection={toggleOpenSection}
           openIndex={openIndex}
           updateFormValues={updateFormValues}
           addFormValue={addFormValue}
+          removeEntry={removeEntry}
         ></InputContainerComponent>
       </div>
       <div className={styles['right-side']}>
