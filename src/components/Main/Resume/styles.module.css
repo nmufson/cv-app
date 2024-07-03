@@ -6,11 +6,22 @@
   border: 1px black solid;
   width: 100%;
   height: 100%;
-  margin: 10px 15px;
+  margin: 15px 20px;
+  display: flex;
+  flex-direction: column;
 }
 
-.resume-section {
-  border-bottom: 1px black solid;
+.resume * p {
+  font-size: 1.2rem;
+}
+
+.resume * h3 {
+  font-size: 2rem;
+}
+
+.resume * h4 {
+  font-size: 1.3rem;
+  margin: 0 0 0 15px;
 }
 
 h6 {
@@ -38,9 +49,15 @@ h6 {
   position: relative;
 }
 
+.personal * p,
+h3 {
+  margin: 0;
+}
+
 .personal > div {
   display: flex;
   flex-direction: column;
+  margin: 10px 0 10px 0;
 }
 
 .personal > div:first-child {
@@ -60,9 +77,21 @@ h6 {
   align-items: flex-end;
 }
 
+.personal > div > div:first-child {
+  margin-bottom: 5px;
+}
+
+.resume > div:nth-child(2) {
+  margin-bottom: 30px;
+}
+
 .education {
   display: flex;
   flex-direction: column;
+}
+
+.education * p {
+  margin: 0;
 }
 
 .education > div {
@@ -72,4 +101,8 @@ h6 {
 .education > div:not(:last-child) {
   display: flex;
   justify-content: space-between;
+}
+
+.education > div:nth-child(2) {
+  margin-bottom: 5px;
 }

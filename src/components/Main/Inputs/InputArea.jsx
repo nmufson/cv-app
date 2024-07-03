@@ -59,30 +59,38 @@ const InputSection = ({
   const isOpen = openIndex === sectionIndex;
 
   return (
-    <div className={styles['input-section']}>
+    <div className={styles['input-section-container']}>
       <h2 onClick={toggleOpenSection}>{sectionTitle}</h2>
+
       {isOpen && (
         <>
-          {formValues.map((entry, index) => (
-            <FormComponent
-              key={entry.id}
-              sectionId={sectionId}
-              sectionInputs={sectionInputs}
-              sectionIndex={sectionIndex}
-              entry={entry}
-              entryIndex={index}
-              updateFormValues={updateFormValues}
-              removeEntry={removeEntry}
-              openEntry={openEntry}
-              toggleOpenEntry={toggleOpenEntry}
-            />
-          ))}
-          <button onClick={toggleOpenSection}>Close</button>
+          <div className={styles['input-section']}>
+            {formValues.map((entry, index) => (
+              <FormComponent
+                key={entry.id}
+                sectionId={sectionId}
+                sectionInputs={sectionInputs}
+                sectionIndex={sectionIndex}
+                entry={entry}
+                entryIndex={index}
+                updateFormValues={updateFormValues}
+                removeEntry={removeEntry}
+                openEntry={openEntry}
+                toggleOpenEntry={toggleOpenEntry}
+              />
+            ))}
+          </div>
+          <div>
+            <button onClick={toggleOpenSection}>Close</button>
 
-          <button onClick={() => addFormValue(sectionId)}>Add Entry</button>
-          {/* save will turn the inputs into display text 
+            {sectionId !== 'personal' && sectionId !== 'technicalSkills' && (
+              <button onClick={() => addFormValue(sectionId)}>Add Entry</button>
+            )}
+
+            {/* save will turn the inputs into display text 
           and an edit button */}
-          <button>Save</button>
+            <button onClick={() => toggleOpenEntry(null)}>Save</button>
+          </div>
         </>
       )}
     </div>
@@ -112,7 +120,7 @@ export const FormComponent = ({
   //for part of the key
   return (
     <div
-      className={`${sectionId}-form`}
+      className={`${sectionId} form-component`}
       onClick={() => toggleOpenEntry(entryIndex)}
     >
       {isOpenEntry &&
@@ -138,7 +146,11 @@ export const FormComponent = ({
             <p>{entry.values[inputName]}</p>
           </div>
         ))}
-      <button onClick={() => removeEntry(sectionId, entryIndex)}>Remove</button>
+      {sectionId !== 'personal' && (
+        <button onClick={() => removeEntry(sectionId, entryIndex)}>
+          Remove
+        </button>
+      )}
     </div>
   );
 };

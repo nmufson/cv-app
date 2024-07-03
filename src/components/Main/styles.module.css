@@ -3,10 +3,13 @@
   justify-content: space-around;
   width: 95%;
   margin: auto;
+  height: 95%;
 }
 
 .left-side {
   width: 50%;
+  display: flex;
+  justify-content: center;
 }
 
 .right-side {

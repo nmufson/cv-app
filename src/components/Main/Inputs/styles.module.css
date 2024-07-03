@@ -2,6 +2,18 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+}
+
+.input-section-container {
+  border: 1px black solid;
+  min-width: 600px;
+  display: flex;
+  flex-direction: column;
+}
+
+.input-section {
+  display: flex;
 }
 
 .form-component {
