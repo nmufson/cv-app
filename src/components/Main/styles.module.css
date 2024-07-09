@@ -1,9 +1,8 @@
 .main {
   display: flex;
   justify-content: space-around;
-  width: 95%;
-  margin: auto;
   height: 95%;
+  background-color: #e7d4b5;
 }
 
 .left-side {

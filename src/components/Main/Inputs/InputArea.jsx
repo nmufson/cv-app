@@ -123,34 +123,41 @@ export const FormComponent = ({
       className={`${sectionId} form-component`}
       onClick={() => toggleOpenEntry(entryIndex)}
     >
-      {isOpenEntry &&
-        inputNamesArray.map((inputName, index) => (
-          <div key={`${sectionId}-${index}`}>
-            <label>{inputName}</label>
-            <input
-              type={sectionInputs[inputName].type}
-              required={sectionInputs[inputName].required}
-              maxLength={sectionInputs[inputName].maxLength}
-              step={sectionInputs[inputName].step}
-              min={sectionInputs[inputName].min}
-              max={sectionInputs[inputName].max}
-              value={entry.values[inputName] || ''}
-              onChange={(event) => handleInputChange(event, inputName)}
-            ></input>
-          </div>
-        ))}
-      {!isOpenEntry &&
-        inputNamesArray.map((inputName, index) => (
-          <div key={`${sectionId}-${index}`}>
-            <label>{inputName}</label>
-            <p>{entry.values[inputName]}</p>
-          </div>
-        ))}
-      {sectionId !== 'personal' && (
-        <button onClick={() => removeEntry(sectionId, entryIndex)}>
-          Remove
-        </button>
-      )}
+      <div>
+        {isOpenEntry &&
+          inputNamesArray.map((inputName, index) => (
+            <div
+              key={`${sectionId}-${index}`}
+              className={styles['input-label-container']}
+            >
+              <label>{inputName}</label>
+              <input
+                type={sectionInputs[inputName].type}
+                required={sectionInputs[inputName].required}
+                maxLength={sectionInputs[inputName].maxLength}
+                step={sectionInputs[inputName].step}
+                min={sectionInputs[inputName].min}
+                max={sectionInputs[inputName].max}
+                value={entry.values[inputName] || ''}
+                onChange={(event) => handleInputChange(event, inputName)}
+              ></input>
+            </div>
+          ))}
+        {!isOpenEntry &&
+          inputNamesArray.map((inputName, index) => (
+            <div key={`${sectionId}-${index}`}>
+              <label>{inputName}</label>
+              <p>{entry.values[inputName]}</p>
+            </div>
+          ))}
+      </div>
+      <div>
+        {sectionId !== 'personal' && (
+          <button onClick={() => removeEntry(sectionId, entryIndex)}>
+            Remove
+          </button>
+        )}
+      </div>
     </div>
   );
 };

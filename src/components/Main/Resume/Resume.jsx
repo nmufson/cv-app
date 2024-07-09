@@ -47,27 +47,29 @@ const ExperienceInstanceComponent = ({ values }) => {
     <>
       <div>
         <div>
-          <p>
+          <p className={styles['experience-name']}>
             {values['Company Name'] || 'Wells Fargo CIB'},{' '}
-            {values.Location || 'New York, NY'}
           </p>
+          <p>{values.Location || 'New York, NY'}</p>
         </div>
         <div>
           <p>
-            {startDate && (
+            {(startDate && (
               <>
                 {format(new Date(startDate), 'MMMM')}{' '}
                 {format(new Date(startDate), 'yyyy')}
                 {' - '}
               </>
-            )}
+            )) ||
+              'July 2023 '}
             {(endDate && (
               <>
                 {format(new Date(endDate), 'MMMM')}{' '}
                 {format(new Date(endDate), 'yyyy')}
               </>
             )) ||
-              (startDate && <>Present</>)}
+              (startDate && <>Present</>) ||
+              '- Present'}
           </p>
         </div>
       </div>
@@ -81,6 +83,24 @@ const ExperienceInstanceComponent = ({ values }) => {
               <p>{values[description]}</p>
             </li>
           ))}
+          <li>
+            <p>
+              Operatus sum in variis projectis et curavi ut omnes fines
+              temporales et budgetarii obvenirentur
+            </p>
+          </li>
+          <li>
+            <p>
+              Operatus sum in variis projectis et curavi ut omnes fines
+              temporales et budgetarii obvenirentur
+            </p>
+          </li>
+          <li>
+            <p>
+              Operatus sum in variis projectis et curavi ut omnes fines
+              temporales et budgetarii obvenirentur
+            </p>
+          </li>
         </ul>
       </div>
     </>
@@ -95,7 +115,7 @@ const ProjectInstanceComponent = ({ values }) => {
   return (
     <>
       <div>
-        <p>{values['Project Name']}</p>
+        <p className={styles['experience-name']}>{values['Project Name']}</p>
       </div>
       <div>
         <p>{values.Website}</p>
@@ -190,8 +210,12 @@ const EducationInstanceComponent = ({ values }) => {
     <>
       <div>
         <div>
+          <p className={styles['experience-name']}>
+            {values['School Name'] || 'Indiana University'}
+            {', '}
+          </p>
           <p>
-            {values['School Name'] || 'Indiana University'},{' '}
+            &nbsp;
             {values.Location || 'Bloomington, IN'}
           </p>
         </div>

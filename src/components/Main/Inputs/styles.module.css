@@ -1,3 +1,39 @@
+h2 {
+  font-size: 1.8rem;
+  margin: 20px 0 20px 10px;
+}
+
+label {
+  font-size: 1.3rem;
+}
+
+input {
+  font-size: 1.3rem;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  background-color: #dbcdbd;
+}
+
+.input-container * button {
+  margin: 5px;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: 600;
+  text-align: center;
+  text-decoration: none;
+  background-color: #a0937d; /* Use your provided color */
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.input-container * button:hover {
+  background-color: #e7d4b5; /* Lighter shade on hover */
+  color: #a0937d; /* Darker text for contrast */
+}
+
 .input-container {
   display: flex;
   flex-direction: column;
@@ -7,15 +43,35 @@
 
 .input-section-container {
   border: 1px black solid;
-  min-width: 600px;
+  width: 900px;
   display: flex;
   flex-direction: column;
+  background-color: #b6c7aa;
+}
+
+.input-section-container > :nth-child(3) {
+  margin: 0 0 10px 15px;
 }
 
 .input-section {
   display: flex;
+  flex-wrap: wrap;
 }
 
-.form-component {
+.input-section > div {
   border: 1px solid black;
+  min-width: 330px;
+  display: flex;
+  margin: 10px 10px 20px 15px;
+  background-color: #f6e6cb;
+}
+
+.input-section > div > div {
+  align-self: flex-end;
+  margin: 10px;
+}
+
+.input-label-container {
+  display: flex;
+  flex-direction: column;
 }

@@ -4,11 +4,12 @@
 
 .resume {
   border: 1px black solid;
-  width: 100%;
-  height: 100%;
+  width: 816px;
+  height: 1056px;
   margin: 15px 20px;
   display: flex;
   flex-direction: column;
+  background-color: white;
 }
 
 .resume * p {
@@ -21,12 +22,21 @@
 
 .resume * h4 {
   font-size: 1.3rem;
-  margin: 0 0 0 15px;
+  margin: 0 0 0 var(--side-margin);
 }
 
 h6 {
   font-size: 1.4rem;
   margin: 0 0 0 var(--side-margin);
+}
+
+ul {
+  padding: 0 0 0 20px;
+  margin: 0;
+}
+
+.experience-name {
+  font-weight: bold;
 }
 
 .border-container {
@@ -60,11 +70,6 @@ h3 {
   margin: 10px 0 10px 0;
 }
 
-.personal > div:first-child {
-  margin-left: var(--side-margin);
-  align-items: flex-start;
-}
-
 .personal > div:nth-child(2) {
   align-items: center;
   position: absolute;
@@ -72,17 +77,12 @@ h3 {
   transform: translateX(-50%);
 }
 
-.personal > div:nth-child(3) {
-  margin-right: var(--side-margin);
-  align-items: flex-end;
-}
-
 .personal > div > div:first-child {
   margin-bottom: 5px;
 }
 
-.resume > div:nth-child(2) {
-  margin-bottom: 30px;
+.resume > :not(:first-child) {
+  margin-bottom: 20px;
 }
 
 .education {
@@ -103,6 +103,29 @@ h3 {
   justify-content: space-between;
 }
 
+.education > div:not(:last-child) > div {
+  display: flex;
+}
+
 .education > div:nth-child(2) {
   margin-bottom: 5px;
+}
+
+.personal,
+.workExperience,
+.projects,
+.technicalSkills {
+  margin-left: var(--side-margin);
+  margin-right: var(--side-margin);
+}
+
+.workExperience * p,
+.projects * p,
+.technicalSkills * p {
+  margin: 0;
+}
+
+.workExperience > div:first-child {
+  display: flex;
+  justify-content: space-between;
 }
