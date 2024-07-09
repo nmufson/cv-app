@@ -4,8 +4,8 @@
 
 .resume {
   border: 1px black solid;
-  width: 816px;
-  height: 1056px;
+  width: 612px;
+  height: 792px;
   margin: 15px 20px;
   display: flex;
   flex-direction: column;
@@ -13,11 +13,11 @@
 }
 
 .resume * p {
-  font-size: 1.2rem;
+  font-size: 0.8rem;
 }
 
 .resume * h3 {
-  font-size: 2rem;
+  font-size: 1.5rem;
 }
 
 .resume * h4 {

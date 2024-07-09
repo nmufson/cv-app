@@ -1,17 +1,21 @@
 h2 {
-  font-size: 1.8rem;
+  font-size: 1.5rem;
   margin: 20px 0 20px 10px;
 }
 
-label {
-  font-size: 1.3rem;
+label,
+input {
+  font-size: 0.9rem;
 }
 
 input {
-  font-size: 1.3rem;
   margin-top: 5px;
   border: 1px solid #ccc;
   background-color: #dbcdbd;
+}
+
+.input-container * p {
+  font-weight: bold;
 }
 
 .input-container * button {
@@ -43,7 +47,7 @@ input {
 
 .input-section-container {
   border: 1px black solid;
-  width: 900px;
+  width: 650px;
   display: flex;
   flex-direction: column;
   background-color: #b6c7aa;
@@ -60,15 +64,19 @@ input {
 
 .input-section > div {
   border: 1px solid black;
-  min-width: 330px;
+  width: 290px;
   display: flex;
   margin: 10px 10px 20px 15px;
   background-color: #f6e6cb;
+  flex-direction: column;
 }
 
 .input-section > div > div {
-  align-self: flex-end;
   margin: 10px;
+}
+
+.input-section > div > div:first-child {
+  align-self: flex-start;
 }
 
 .input-label-container {
